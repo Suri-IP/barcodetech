@@ -53,6 +53,7 @@ header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid 
   cursor:pointer;transition:background .15s,transform .15s;
 }
 .btn:hover,.btn:focus-visible{background:var(--primary-dark);border-color:var(--primary-dark);transform:translateY(-1px)}
+.btn .arr{width:1.1em;height:1.1em;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 .btn.outline{background:transparent;color:#fff;border-color:#fff}
 .btn.outline:hover{background:rgba(255,255,255,.12)}
 .menu-toggle{display:none;background:none;border:1px solid var(--line);padding:8px 12px;font-size:1.2rem;cursor:pointer}
@@ -72,20 +73,23 @@ header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid 
 }
 .hero-text > *{pointer-events:auto;max-width:46%}
 .eyebrow{display:flex;align-items:center;gap:12px;color:#DFF4F5;font-size:.95rem;margin-bottom:14px}
-.eyebrow::before{content:"";width:40px;height:2px;background:#DFF4F5}
+.eyebrow::before{content:"";width:30px;height:2px;background:#DFF4F5}
 .hero h1{font-family:var(--display);font-weight:700;color:#fff;font-size:clamp(1.35rem,2.6vw,2.4rem);line-height:1.35}
-.hero .sub{color:#EAF7F8;margin-top:16px;font-size:clamp(.85rem,1.2vw,1.05rem)}
-.hero .btn{margin-top:26px;background:transparent;border-color:#fff}
+.hero .cta-row{margin-top:26px}
+.hero .sub{color:#EAF7F8;margin-top:24px;font-size:clamp(.85rem,1.2vw,1.05rem)}
+.hero .btn{background:transparent;border-color:#fff}
 .hero .btn:hover{background:rgba(255,255,255,.15)}
-/* มือถือ: ใช้ภาพเวอร์ชันมือถือ (พื้น teal ด้านบนในตัวภาพ) ข้อความชิดบน ปุ่มอยู่ล่างตามแบบ */
+/* มือถือ: ใช้ภาพเวอร์ชันมือถือ (พื้น teal ด้านบนในตัวภาพ) พาดหัว+ปุ่มอยู่บนโซน teal ประโยคปิดท้ายอยู่ล่างสุด */
 @media(max-width:760px){
   .hero-img{aspect-ratio:1/1;object-position:center}
-  .hero-text{justify-content:flex-start;padding:30px 22px 34px}
+  .hero-text{justify-content:flex-start;padding:26px 22px 28px}
   .hero-text > *{max-width:100%}
   .hero h1{font-size:clamp(1.45rem,6.8vw,1.9rem)}
+  .lang-en .hero h1{font-size:clamp(1.2rem,5.6vw,1.7rem)}   /* อังกฤษคำยาวกว่า ลดขนาดให้จบ 3 บรรทัด */
   .hero .eyebrow{font-size:.85rem;margin-bottom:10px}
-  .hero .sub{font-size:.88rem;margin-top:12px}
-  .hero-text > div{margin-top:auto}   /* ดันปุ่ม REQUEST A QUOTE ลงล่างสุด */
+  .hero .cta-row{margin-top:20px}
+  .hero .btn{padding:8px 16px;font-size:.72rem;border-width:1.5px}   /* ~60% ของขนาดเดิม เฉพาะมือถือ */
+  .hero .sub{margin-top:auto;font-size:.88rem;text-shadow:0 1px 6px rgba(0,40,44,.55)}
 }
 
 /* ===== Trust bar ===== */
@@ -205,14 +209,14 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
   <div class="hero-text">
     <p class="eyebrow"><span class="th">กว่า 20 ปีของการดูแล</span><span class="en">Over 20 years of trusted care</span></p>
     <h1>
-      <span class="th">สติ๊กเกอร์บาร์โค้ด<br>และฉลากสินค้าคุณภาพ<br>สำหรับธุรกิจที่ต้องการความมั่นใจ</span>
-      <span class="en">Quality Barcode Stickers<br>and Product Labels<br>for Businesses That Demand Confidence</span>
+      <span class="th">สติ๊กเกอร์บาร์โค้ด<br>และฉลากคุณภาพ<br>ช่วยธุรกิจคุณไม่ให้สะดุด</span>
+      <span class="en">Quality Barcode Stickers<br>and Labels to Keep<br>Your Business Moving</span>
     </h1>
+    <div class="cta-row"><a class="btn" href="#contact">REQUEST A QUOTE <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
     <p class="sub">
-      <span class="th">มาตรฐานที่สม่ำเสมอ และการส่งมอบที่เชื่อถือได้<br>เพื่อสนับสนุนผู้ผลิตและเจ้าของแบรนด์เช่นคุณ</span>
-      <span class="en">Consistent standards and reliable delivery<br>to support manufacturers and brand owners like you.</span>
+      <span class="th">มาตรฐานที่สม่ำเสมอ และการส่งมอบที่เชื่อถือได้</span>
+      <span class="en">Consistent standards and reliable delivery.</span>
     </p>
-    <div><a class="btn" href="#contact">REQUEST A QUOTE &nbsp;→</a></div>
   </div>
 </section>
 
@@ -368,7 +372,7 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
 <section class="cta" id="contact" style="padding:56px 24px">
   <h2>Ready to discuss your label requirements?</h2>
   <p>Send us your specifications and receive a quotation from our team.</p>
-  <a class="btn outline" href="#contact">REQUEST A QUOTE &nbsp;→</a>
+  <a class="btn outline" href="#contact">REQUEST A QUOTE <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
 </section>
 </main>
 
