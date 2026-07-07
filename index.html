@@ -76,10 +76,10 @@ header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid 
 .eyebrow::before{content:"";width:30px;height:2px;background:#DFF4F5}
 .hero h1{font-family:var(--display);font-weight:700;color:#fff;font-size:clamp(1.35rem,2.6vw,2.4rem);line-height:1.35}
 .hero .cta-row{margin-top:26px}
-.hero .sub{color:#EAF7F8;margin-top:24px;font-size:clamp(.85rem,1.2vw,1.05rem)}
+.hero .sub{color:#EAF7F8;margin-top:16px;font-size:clamp(.85rem,1.2vw,1.05rem)}
 .hero .btn{background:transparent;border-color:#fff}
 .hero .btn:hover{background:rgba(255,255,255,.15)}
-/* มือถือ: ใช้ภาพเวอร์ชันมือถือ (พื้น teal ด้านบนในตัวภาพ) พาดหัว+ปุ่มอยู่บนโซน teal ประโยคปิดท้ายอยู่ล่างสุด */
+/* มือถือ: ใช้ภาพเวอร์ชันมือถือ (พื้น teal ด้านบนในตัวภาพ) พาดหัว+ปุ่มอยู่บนโซน teal, ตัดประโยครองออก */
 @media(max-width:760px){
   .hero-img{aspect-ratio:1/1;object-position:center}
   .hero-text{justify-content:flex-start;padding:26px 22px 28px}
@@ -89,7 +89,7 @@ header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid 
   .hero .eyebrow{font-size:.85rem;margin-bottom:10px}
   .hero .cta-row{margin-top:20px}
   .hero .btn{padding:8px 16px;font-size:.72rem;border-width:1.5px}   /* ~60% ของขนาดเดิม เฉพาะมือถือ */
-  .hero .sub{margin-top:auto;font-size:.88rem;text-shadow:0 1px 6px rgba(0,40,44,.55)}
+  .hero .sub{display:none}
 }
 
 /* ===== Trust bar ===== */
@@ -215,11 +215,11 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
       <span class="th">สติ๊กเกอร์บาร์โค้ด<br>และฉลากคุณภาพ<br>ช่วยธุรกิจคุณไม่ให้สะดุด</span>
       <span class="en">Quality Barcode Stickers<br>and Labels to Keep<br>Your Business Moving</span>
     </h1>
-    <div class="cta-row"><a class="btn" href="#contact">REQUEST A QUOTE <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
     <p class="sub">
       <span class="th">มาตรฐานที่สม่ำเสมอ และการส่งมอบที่เชื่อถือได้</span>
       <span class="en">Consistent standards and reliable delivery.</span>
     </p>
+    <div class="cta-row"><a class="btn" href="#contact">REQUEST A QUOTE <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
   </div>
 </section>
 
