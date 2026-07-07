@@ -54,6 +54,8 @@ header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid 
 }
 .btn:hover,.btn:focus-visible{background:var(--primary-dark);border-color:var(--primary-dark);transform:translateY(-1px)}
 .btn .arr{width:1.1em;height:1.1em;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.btn .th{font-size:1.14em;line-height:1.45}   /* ตัวไทยดูเล็กกว่าตัวพิมพ์ใหญ่อังกฤษ ขยายชดเชยเฉพาะข้อความ ไม่กระทบลูกศร/กรอบ */
+.nav > .btn{padding:9px 18px;font-size:.8rem}   /* ปุ่มบนเฮดเดอร์ให้เล็กและสั้นลง */
 .btn.outline{background:transparent;color:#fff;border-color:#fff}
 .btn.outline:hover{background:rgba(255,255,255,.12)}
 .menu-toggle{display:none;background:none;border:1px solid var(--line);padding:8px 12px;font-size:1.2rem;cursor:pointer}
@@ -87,7 +89,7 @@ header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid 
   .hero h1{font-size:clamp(1.45rem,6.8vw,1.9rem)}
   .lang-en .hero h1{font-size:clamp(1.2rem,5.6vw,1.7rem)}   /* อังกฤษคำยาวกว่า ลดขนาดให้จบ 3 บรรทัด */
   .hero .eyebrow{font-size:.85rem;margin-bottom:10px}
-  .hero .cta-row{margin-top:20px}
+  .hero .cta-row{margin-top:auto}   /* ดันปุ่มลงล่างสุดของภาพ */
   .hero .btn{padding:8px 16px;font-size:.72rem;border-width:1.5px}   /* ~60% ของขนาดเดิม เฉพาะมือถือ */
   .hero .sub{display:none}
 }
@@ -197,7 +199,7 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
     <div class="lang-switch" role="group" aria-label="เลือกภาษา / Select language">
       <button id="btnTH" class="on" onclick="setLang('th')" aria-pressed="true">TH</button><span>|</span><button id="btnEN" onclick="setLang('en')" aria-pressed="false">EN</button>
     </div>
-    <a class="btn" href="#contact">REQUEST A QUOTE</a>
+    <a class="btn" href="#contact"><span class="th">ขอใบเสนอราคา</span><span class="en">REQUEST A QUOTE</span></a>
     <button class="menu-toggle" aria-label="เปิดเมนู" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
   </div>
 </header>
@@ -219,7 +221,7 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
       <span class="th">มาตรฐานที่สม่ำเสมอ และการส่งมอบที่เชื่อถือได้</span>
       <span class="en">Consistent standards and reliable delivery.</span>
     </p>
-    <div class="cta-row"><a class="btn" href="#contact">REQUEST A QUOTE <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+    <div class="cta-row"><a class="btn" href="#contact"><span class="th">ขอใบเสนอราคา</span><span class="en">REQUEST A QUOTE</span> <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
   </div>
 </section>
 
@@ -383,9 +385,9 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
 
 <!-- ===== CTA ===== -->
 <section class="cta" id="contact" style="padding:56px 24px">
-  <h2>Ready to discuss your label requirements?</h2>
-  <p>Send us your specifications and receive a quotation from our team.</p>
-  <a class="btn outline" href="#contact">REQUEST A QUOTE <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+  <h2><span class="th">พร้อมให้คำปรึกษาและจัดทำใบเสนอราคา</span><span class="en">Ready to discuss your label requirements?</span></h2>
+  <p><span class="th">ส่งรายละเอียดงานหรือข้อมูลสินค้า เพื่อรับใบเสนอราคาจากทีมงานของเรา</span><span class="en">Send us your specifications and receive a quotation from our team.</span></p>
+  <a class="btn outline" href="#contact"><span class="th">ขอใบเสนอราคา</span><span class="en">REQUEST A QUOTE</span> <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
 </section>
 </main>
 
