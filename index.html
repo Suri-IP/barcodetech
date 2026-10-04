@@ -196,6 +196,30 @@ section{padding:64px 0}
 .cta p{color:#DFF4F5;margin:10px auto 26px;max-width:36rem}
 footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* ===== Floating LINE contact button ===== */
+.bct-line-float{
+  position:fixed;right:24px;bottom:24px;z-index:1000;
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px;border:1px solid rgba(255,255,255,.28);border-radius:999px;
+  background:var(--primary);color:#fff;
+  box-shadow:0 8px 24px rgba(10,63,69,.22);
+  font-family:var(--display);font-size:.88rem;font-weight:600;line-height:1.2;
+  transition:background .15s,transform .15s,box-shadow .15s;
+}
+.bct-line-float:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 10px 28px rgba(10,63,69,.28)}
+.bct-line-float:focus-visible{outline:3px solid var(--primary-dark);outline-offset:4px}
+.bct-line-float__icon{display:block;width:26px;height:26px;flex:0 0 26px}
+.bct-line-float__copy{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.bct-line-float__label{font-size:.92rem}
+.bct-line-float__brand{font-family:Arial,sans-serif;font-weight:700;letter-spacing:.02em;font-size:.78rem}
+@media(max-width:560px){
+  .bct-line-float{right:16px;bottom:16px;gap:8px;padding:9px 13px;font-size:.82rem}
+  .bct-line-float__icon{width:24px;height:24px;flex-basis:24px}
+}
+.cta .quote-embed{width:100%;max-width:1180px;margin:32px auto 0;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 12px 32px rgba(10,63,69,.16)}
+.cta .quote-embed iframe{display:block;width:100%;height:900px;border:0;background:#fff}
+@media(max-width:700px){.cta .quote-embed{margin:24px -8px 0}.cta .quote-embed iframe{height:1050px}}
 </style>
 
 
@@ -212,12 +236,12 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
       <li><a href="#products">PRODUCT</a></li>
       <li><a href="#industries">INDUSTRIES</a></li>
       <li><a href="#solutions">SOLUTIONS</a></li>
-      <li><a href="https://script.google.com/macros/s/AKfycbyH4vYcYnoZqOMN7TRkNHcdQy_k1e5qW1B3Et4uCp5dj_2gJQ5nJll2YBbl_TsmfK20/exec">CONTACT</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
     </ul>
     <div class="lang-switch" role="group" aria-label="เลือกภาษา / Select language">
       <button id="btnTH" class="on" onclick="setLang('th')" aria-pressed="true">TH</button><span>|</span><button id="btnEN" onclick="setLang('en')" aria-pressed="false">EN</button>
     </div>
-    <a class="btn" href="https://script.google.com/macros/s/AKfycbyH4vYcYnoZqOMN7TRkNHcdQy_k1e5qW1B3Et4uCp5dj_2gJQ5nJll2YBbl_TsmfK20/exec"><span class="th">ขอใบเสนอราคา</span><span class="en">REQUEST A QUOTE</span></a>
+    <a class="btn" href="#quote"><span class="th">ขอใบเสนอราคา</span><span class="en">REQUEST A QUOTE</span></a>
     <button class="menu-toggle" aria-label="เปิดเมนู" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
   </div>
 </header>
@@ -239,7 +263,7 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
       <span class="th">มาตรฐานที่สม่ำเสมอ และการส่งมอบที่เชื่อถือได้</span>
       <span class="en">Consistent standards and reliable delivery.</span>
     </p>
-    <div class="cta-row"><a class="btn" href="https://script.google.com/macros/s/AKfycbyH4vYcYnoZqOMN7TRkNHcdQy_k1e5qW1B3Et4uCp5dj_2gJQ5nJll2YBbl_TsmfK20/exec"><span class="th">ขอใบเสนอราคา</span><span class="en">REQUEST A QUOTE</span> <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+    <div class="cta-row"><a class="btn" href="#quote"><span class="th">ขอใบเสนอราคา</span><span class="en">REQUEST A QUOTE</span> <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
   </div>
 </section>
 
@@ -408,12 +432,13 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
 </section>
 
 <!-- ===== CTA ===== -->
-<section class="cta" id="contact" style="padding:56px 24px">
+<section class="cta" id="quote" style="padding:56px 24px">
   <h2><span class="th">พร้อมให้คำปรึกษาและจัดทำใบเสนอราคา</span><span class="en">Ready to discuss your label requirements?</span></h2>
   <p><span class="th">ส่งรายละเอียดงานหรือข้อมูลสินค้า เพื่อรับใบเสนอราคาจากทีมงานของเรา</span><span class="en">Send us your specifications and receive a quotation from our team.</span></p>
   
+
+<div class="quote-embed"><iframe src="https://script.google.com/macros/s/AKfycbysnmpytbFUk9CWB6LXkc6gm7rGkNz0eBPRVR5JlLB9VO8skx8JaRK9iksMRQiz_8hR/exec" title="แบบฟอร์มขอใบเสนอราคา" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 </section>
-<!-- Quote form is hosted by the linked Apps Script web app. -->
 </main>
 
 <footer id="about">
@@ -446,5 +471,12 @@ if (productsToggle) {
     document.getElementById('products-toggle-arrow').textContent = expanded ? '→' : '↑';
   });
 }</script>
+<a class="bct-line-float" href="https://line.me/" target="_blank" rel="noopener noreferrer" aria-label="สอบถามผ่าน LINE">
+  <svg class="bct-line-float__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M24 4C12.4 4 3 11.7 3 21.1c0 5.9 3.8 11.1 9.6 14.1-.4 2.2-1.3 5.1-1.4 5.3-.2.4.1.4.3.3.2-.1 4.1-2.7 6.3-4.2 2 .4 4 .6 6.2.6 11.6 0 21-7.7 21-17.1S35.6 4 24 4z"/>
+    <path fill="#008F99" d="M12.2 26.7v-10c0-.7.5-1.2 1.2-1.2s1.2.5 1.2 1.2v8.8h4.2c.7 0 1.2.5 1.2 1.2s-.5 1.2-1.2 1.2h-5.4c-.7 0-1.2-.5-1.2-1.2zm9.1 0v-10c0-.7.5-1.2 1.2-1.2s1.2.5 1.2 1.2v10c0 .7-.5 1.2-1.2 1.2s-1.2-.5-1.2-1.2zm5.1 0v-10c0-.5.3-.9.8-1.1.5-.2 1 0 1.3.4l5 6.7v-6c0-.7.5-1.2 1.2-1.2s1.2.5 1.2 1.2v10c0 .5-.3.9-.8 1.1-.5.2-1 0-1.3-.4l-5-6.7v6c0 .7-.5 1.2-1.2 1.2s-1.2-.5-1.2-1.2z"/>
+  </svg>
+  <span class="bct-line-float__copy"><span class="bct-line-float__label">สอบถาม</span><span class="bct-line-float__brand">LINE</span></span>
+</a>
 </body>
 </html>
