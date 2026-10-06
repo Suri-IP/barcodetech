@@ -218,8 +218,8 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
   .bct-line-float__icon{width:24px;height:24px;flex-basis:24px}
 }
 .cta .quote-embed{width:100%;max-width:1180px;margin:32px auto 0;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 12px 32px rgba(10,63,69,.16)}
-.cta .quote-embed iframe{display:block;width:100%;height:900px;border:0;background:#fff}
-@media(max-width:700px){.cta .quote-embed{margin:24px -8px 0}.cta .quote-embed iframe{height:1050px}}
+.cta .quote-embed iframe{display:block;width:100%;height:2200px;border:0;background:#fff}
+@media(max-width:700px){.cta .quote-embed{margin:24px -8px 0}.cta .quote-embed iframe{height:2800px}}
 </style>
 
 
@@ -437,7 +437,7 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
   <p><span class="th">ส่งรายละเอียดงานหรือข้อมูลสินค้า เพื่อรับใบเสนอราคาจากทีมงานของเรา</span><span class="en">Send us your specifications and receive a quotation from our team.</span></p>
   
 
-<div class="quote-embed"><iframe id="quoteFormFrame" src="https://script.google.com/macros/s/AKfycbysnmpytbFUk9CWB6LXkc6gm7rGkNz0eBPRVR5JlLB9VO8skx8JaRK9iksMRQiz_8hR/exec" title="แบบฟอร์มขอใบเสนอราคา" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+<div class="quote-embed"><iframe id="quoteFormFrame" src="https://script.google.com/macros/s/AKfycbzjQNki9ITE1qCB7bb27-zZhML86DHfbQKx-ctCXLEauMwyywwbA6m6oqG8scZtTO4D/exec" title="แบบฟอร์มขอใบเสนอราคา" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 </section>
 </main>
 
@@ -481,7 +481,7 @@ if (productsToggle) {
 <script>
 window.addEventListener('message',function(event){
   var frame=document.getElementById('quoteFormFrame');
-  if(!frame||event.source!==frame.contentWindow)return;
+  if(!frame)return;
   var host='';
   try{host=new URL(event.origin).hostname;}catch(ignore){return;}
   if(event.origin!=='https://script.google.com'&&!/(^|\.)googleusercontent\.com$/.test(host))return;
