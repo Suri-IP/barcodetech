@@ -221,11 +221,88 @@ footer{background:var(--teal-deep);color:#B9D6D9;font-size:.85rem;padding:36px 0
 .cta .quote-embed{width:100%;max-width:1180px;margin:32px auto 0;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 12px 32px rgba(10,63,69,.16)}
 .cta .quote-embed iframe{display:block;width:100%;height:900px;border:0;background:#fff}
 @media(max-width:700px){.cta .quote-embed{margin:24px -8px 0}.cta .quote-embed iframe{height:1050px}}
+
+/* ===== More than Barcode intro experiment (scoped, no animation library) ===== */
+.hero-text{transition:opacity .18s ease}
+.bct-intro-copy-hidden .hero-text{opacity:0}
+.bct-intro{display:none;position:fixed;inset:0;z-index:10000;background:#fff;opacity:1;pointer-events:auto}
+.bct-intro.is-started{display:block}
+.bct-intro__panel{position:fixed;z-index:2;left:50%;top:50%;width:min(82vw,420px);height:92px;transform:translate(-50%,-50%);overflow:hidden;border-radius:3px;background:transparent}
+.bct-intro__fill{position:absolute;inset:0;background:var(--primary);transform:scaleX(0);transform-origin:left center}
+.bct-intro__slogan{position:absolute;right:14px;bottom:10px;display:block;color:#fff;font-family:var(--display);font-weight:600;font-size:clamp(.95rem,2.4vw,1.15rem);letter-spacing:.02em;opacity:0;white-space:nowrap}
+.bct-intro.is-started .bct-intro__fill{animation:bctIntroSweep .3s cubic-bezier(.2,.7,.2,1) .04s forwards}
+.bct-intro.is-started .bct-intro__slogan{animation:bctIntroSloganIn .18s ease-out .24s forwards}
+.bct-intro.is-opening .bct-intro__fill{opacity:0;transition:opacity .4s ease}
+.bct-intro.is-opening .bct-intro__slogan{opacity:0;animation:none;transition:opacity .4s ease}
+.bct-intro.is-ending{opacity:0;pointer-events:none;transition:opacity .16s ease}
+.bct-intro__preview{position:fixed;z-index:1;display:block;overflow:hidden;opacity:0;transition:opacity .4s ease,clip-path .68s cubic-bezier(.2,.7,.2,1)}
+.bct-intro.is-opening .bct-intro__preview{opacity:1}
+.bct-intro__preview .hero-img{width:100%;height:100%;max-width:none;aspect-ratio:auto;object-fit:cover;object-position:center}
+@keyframes bctIntroSweep{to{transform:scaleX(1)}}
+@keyframes bctIntroSloganIn{to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.bct-intro{display:none!important}.bct-intro-copy-hidden .hero-text{opacity:1!important}}
 </style>
 
 
 </head>
 <body class="lang-th">
+
+<div class="bct-intro" id="bctIntro" aria-hidden="true">
+  <div class="bct-intro__panel" id="bctIntroPanel">
+    <div class="bct-intro__fill"></div>
+    <div class="bct-intro__slogan">More than Barcode</div>
+  </div>
+</div>
+<script>
+(function(){
+  var intro=document.getElementById('bctIntro');
+  var panel=document.getElementById('bctIntroPanel');
+  var body=document.body;
+  if(!intro||!panel||!body)return;
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion||(location.hash&&location.hash!=='#home')){intro.remove();return;}
+
+  body.classList.add('bct-intro-copy-hidden');
+  intro.classList.add('is-started');
+  var finished=false;
+  function finishIntro(){
+    if(finished)return;
+    finished=true;
+    body.classList.remove('bct-intro-copy-hidden');
+    intro.classList.add('is-ending');
+    setTimeout(function(){intro.remove();},180);
+  }
+  var safetyTimer=setTimeout(finishIntro,2600);
+  document.addEventListener('DOMContentLoaded',function(){
+    if(finished)return;
+    setTimeout(function(){
+      if(finished)return;
+      var hero=document.querySelector('.hero');
+      var picture=hero&&hero.querySelector('picture');
+      if(!hero||!picture){clearTimeout(safetyTimer);finishIntro();return;}
+
+      var startBounds=panel.getBoundingClientRect();
+      var target=hero.getBoundingClientRect();
+      var preview=picture.cloneNode(true);
+      preview.classList.add('bct-intro__preview');
+      intro.appendChild(preview);
+      preview.style.left=target.left+'px';
+      preview.style.top=target.top+'px';
+      preview.style.width=target.width+'px';
+      preview.style.height=target.height+'px';
+      preview.style.clipPath='inset('+(startBounds.top-target.top)+'px '+(target.right-startBounds.right)+'px '+(target.bottom-startBounds.bottom)+'px '+(startBounds.left-target.left)+'px)';
+      intro.classList.add('is-opening');
+      preview.getBoundingClientRect();
+      setTimeout(function(){
+        requestAnimationFrame(function(){
+          preview.style.clipPath='inset(0px)';
+        });
+        setTimeout(function(){clearTimeout(safetyTimer);finishIntro();},700);
+      },420);
+    },950);
+  },{once:true});
+})();
+</script>
 
 <header>
   <div class="wrap nav" id="nav">
