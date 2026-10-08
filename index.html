@@ -505,7 +505,7 @@ window.addEventListener('message',function(event){
   if(!event.data||event.data.type!=='barcode-quote-height')return;
   var height=Number(event.data.height);
   if(!Number.isFinite(height))return;
-  frame.style.height=Math.ceil(Math.max(480,Math.min(height+48,6000)))+'px';
+  frame.style.height=Math.ceil(Math.max(480,Math.min(height+8,6000)))+'px';
 });
 (function(){
   var frame=document.getElementById('quoteFormFrame');
